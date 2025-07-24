@@ -1,0 +1,1 @@
+# soc2-Tactic-Initial-Access-Technique-Spearphishing
