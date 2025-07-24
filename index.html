@@ -3,321 +3,785 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>รู้ทันภัยไซเบอร์: Spearphishing</title>
+    <title>รู้ทันภัยไซเบอร์: Spearphishing - Cyber Security Awareness</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap');
         
         * {
             font-family: 'Kanit', sans-serif;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .font-cyber {
+            font-family: 'Orbitron', monospace;
         }
         
-        .dark .gradient-bg {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        /* Animated Gradient Background */
+        .animated-gradient {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Neon Text Effect */
+        .neon-text {
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #e60073,
+                0 0 40px #e60073,
+                0 0 50px #e60073,
+                0 0 60px #e60073,
+                0 0 70px #e60073;
+        }
+        
+        .neon-blue {
+            text-shadow: 
+                0 0 10px #00d4ff,
+                0 0 20px #00d4ff,
+                0 0 30px #00d4ff,
+                0 0 40px #00d4ff;
+        }
+        
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(-10deg) translateZ(50px);
+        }
+        
+        /* Floating Elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
         }
         
         .floating {
-            animation: float 6s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
         }
         
-        @keyframes float {
-            0% { transform: translatey(0px); }
-            50% { transform: translatey(-20px); }
-            100% { transform: translatey(0px); }
-        }
-        
-        .slide-in {
-            animation: slideIn 0.8s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        .pulse-icon {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
+        /* Pulse Glow */
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
             }
             50% {
-                transform: scale(1.1);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
+                box-shadow: 0 0 40px rgba(99, 102, 241, 0.8), 0 0 60px rgba(99, 102, 241, 0.4);
             }
         }
         
-        .hover-card {
-            transition: all 0.3s ease;
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
         }
         
-        .hover-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        /* Matrix Rain Effect */
+        .matrix-bg {
+            position: relative;
+            overflow: hidden;
         }
         
+        .matrix-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 0, 0.03) 2px,
+                    rgba(0, 255, 0, 0.03) 4px
+                );
+            animation: matrix 20s linear infinite;
+        }
+        
+        @keyframes matrix {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+        
+        /* Glitch Effect */
+        @keyframes glitch {
+            0%, 100% {
+                text-shadow: 
+                    0.05em 0 0 #00fffc,
+                    -0.05em -0.025em 0 #fc00ff,
+                    0.025em 0.05em 0 #fffc00;
+            }
+            15% {
+                text-shadow: 
+                    0.05em 0 0 #00fffc,
+                    -0.05em -0.025em 0 #fc00ff,
+                    0.025em 0.05em 0 #fffc00;
+            }
+            16% {
+                text-shadow: 
+                    -0.05em -0.025em 0 #00fffc,
+                    0.025em 0.025em 0 #fc00ff,
+                    -0.05em -0.05em 0 #fffc00;
+            }
+        }
+        
+        .glitch {
+            animation: glitch 2s infinite;
+        }
+        
+        /* Cyber Grid */
         .cyber-grid {
             background-image: 
-                linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
+            position: relative;
         }
         
-        .dark .cyber-grid {
-            background-image: 
-                linear-gradient(rgba(99, 102, 241, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99, 102, 241, 0.3) 1px, transparent 1px);
+        .cyber-grid::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
         }
         
-        .glow-text {
-            text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        /* Holographic Effect */
+        .holographic {
+            background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06c, #50e3c2);
+            background-size: 300% 300%;
+            animation: holographic 4s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .dark .glow-text {
-            text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+        @keyframes holographic {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Loading Animation */
+        .loader {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid #00d4ff;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00d4ff, #e60073);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #e60073, #00d4ff);
+        }
+        
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+        }
+        
+        /* Animated Border */
+        .animated-border {
+            position: relative;
+            background: linear-gradient(0deg, transparent, transparent) padding-box,
+                        linear-gradient(90deg, #f06, #00d4ff, #f06) border-box;
+            border: 3px solid transparent;
+            border-radius: 20px;
+            animation: borderAnimation 3s linear infinite;
+        }
+        
+        @keyframes borderAnimation {
+            0%, 100% {
+                background: linear-gradient(0deg, transparent, transparent) padding-box,
+                            linear-gradient(90deg, #f06, #00d4ff, #f06) border-box;
+            }
+            50% {
+                background: linear-gradient(0deg, transparent, transparent) padding-box,
+                            linear-gradient(270deg, #00d4ff, #f06, #00d4ff) border-box;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-    <!-- Toggle Dark Mode Button -->
-    <button id="darkModeToggle" class="fixed top-4 right-4 z-50 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
-        <i class="fas fa-moon dark:hidden text-gray-800 text-xl"></i>
-        <i class="fas fa-sun hidden dark:block text-yellow-400 text-xl"></i>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 animated-gradient opacity-10 z-0"></div>
+    <div class="fixed inset-0 cyber-grid z-0"></div>
+
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="fixed top-4 right-4 z-50 glass p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 pulse-glow">
+        <i class="fas fa-moon text-yellow-400 text-xl" id="moonIcon"></i>
+        <i class="fas fa-sun text-orange-400 text-xl hidden" id="sunIcon"></i>
     </button>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-20 relative overflow-hidden">
-        <div class="cyber-grid absolute inset-0 opacity-20"></div>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 matrix-bg opacity-20"></div>
+        
+        <!-- Animated Particles -->
+        <div class="particles absolute inset-0"></div>
+        
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 slide-in glow-text">
-                    <i class="fas fa-shield-alt pulse-icon mr-4"></i>
-                    รู้ทันภัยไซเบอร์: Spearphishing
+                <div class="mb-8 floating">
+                    <i class="fas fa-shield-virus text-8xl text-cyan-400 neon-blue"></i>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 font-cyber">
+                    <span class="holographic">CYBER</span>
+                    <span class="text-white glitch">SECURITY</span>
                 </h1>
-                <p class="text-xl md:text-2xl mb-8 slide-in" style="animation-delay: 0.2s;">
-                    ภัยคุกคามที่ทุกคนควรรู้และป้องกัน
+                
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 neon-text">
+                    รู้ทันภัยไซเบอร์: Spearphishing
+                </h2>
+                
+                <p class="text-xl md:text-2xl mb-12 text-cyan-300">
+                    <i class="fas fa-exclamation-triangle mr-2 text-yellow-400"></i>
+                    ภัยคุกคามที่ทุกคนต้องระวัง
                 </p>
-                <div class="floating">
-                    <i class="fas fa-envelope-open-text text-6xl opacity-50"></i>
+                
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="glass px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-all duration-300 pulse-glow">
+                        <i class="fas fa-play mr-2"></i>
+                        ดูวิดีโอ
+                    </button>
+                    <button class="bg-gradient-to-r from-pink-500 to-violet-500 px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-all duration-300 shadow-2xl">
+                        <i class="fas fa-book-reader mr-2"></i>
+                        เรียนรู้เพิ่มเติม
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+            <p class="text-sm mb-2 text-cyan-300">เลื่อนลงเพื่อดูเพิ่มเติม</p>
+            <i class="fas fa-chevron-down text-2xl animate-bounce"></i>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-20 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 reveal">
+                    <i class="fas fa-video mr-4 text-red-500"></i>
+                    <span class="holographic">วิดีโอสาธิต Spearphishing Attack</span>
+                </h2>
+                
+                <div class="glass p-8 rounded-3xl shadow-2xl reveal">
+                    <div class="video-container animated-border">
+                        <iframe 
+                            src="https://www.youtube.com/embed/oyCxRNK7ihs" 
+                            title="Spearphishing Attack Demo"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-lg text-cyan-300">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            วิดีโอนี้แสดงให้เห็นถึงวิธีการโจมตีแบบ Spearphishing ในมุมมองของ MITRE ATT&CK Framework
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MITRE ATT&CK Info -->
-    <section class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+    <!-- MITRE ATT&CK Section -->
+    <section class="py-20 relative z-10">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 p-8 rounded-2xl shadow-xl hover-card">
-                    <h2 class="text-3xl font-bold mb-4 text-purple-800 dark:text-purple-200">
-                        <i class="fas fa-info-circle mr-3"></i>MITRE ATT&CK Framework
-                    </h2>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-                            <h3 class="text-xl font-semibold mb-2 text-purple-700 dark:text-purple-300">
-                                <i class="fas fa-crosshairs mr-2"></i>Tactic: Initial Access
-                            </h3>
-                            <p class="text-gray-700 dark:text-gray-300">
-                                วิธีการที่ผู้โจมตีใช้เพื่อเข้าสู่ระบบหรือเครือข่ายเป้าหมายในครั้งแรก
-                            </p>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal">
+                <span class="neon-blue">MITRE ATT&CK</span> Framework
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="glass p-8 rounded-3xl card-3d reveal hover:scale-105 transition-all duration-500">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-crosshairs text-2xl"></i>
                         </div>
-                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-                            <h3 class="text-xl font-semibold mb-2 text-pink-700 dark:text-pink-300">
-                                <i class="fas fa-fish mr-2"></i>Technique: Spearphishing
-                            </h3>
-                            <p class="text-gray-700 dark:text-gray-300">
-                                การส่งอีเมลหลอกลวงที่มีเป้าหมายเฉพาะเจาะจง เพื่อหลอกให้เหยื่อคลิกลิงก์หรือเปิดไฟล์แนบ
-                            </p>
+                        <h3 class="text-2xl font-bold">Tactic: Initial Access</h3>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        กลยุทธ์ที่ผู้โจมตีใช้เพื่อเข้าถึงระบบเป้าหมายในครั้งแรก เป็นจุดเริ่มต้นของการโจมตีทั้งหมด
+                    </p>
+                    <div class="mt-4 flex items-center text-cyan-400">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        <span>ระดับความเสี่ยง: สูงมาก</span>
+                    </div>
+                </div>
+                
+                <div class="glass p-8 rounded-3xl card-3d reveal hover:scale-105 transition-all duration-500">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-600 rounded-2xl flex items-center justify-center mr-4">
+                            <i class="fas fa-fish text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Technique: Spearphishing</h3>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        เทคนิคการส่งอีเมลหลอกลวงแบบเจาะจงเป้าหมาย ใช้ข้อมูลส่วนตัวเพื่อสร้างความน่าเชื่อถือ
+                    </p>
+                    <div class="mt-4 flex items-center text-pink-400">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span>ช่องทางหลัก: Email</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Threat Level -->
+    <section class="py-20 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto glass p-12 rounded-3xl reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">
+                    <i class="fas fa-tachometer-alt mr-3 text-yellow-400"></i>
+                    ระดับความอันตราย
+                </h2>
+                
+                <div class="relative h-40 mb-8">
+                    <div class="absolute inset-0 bg-gradient-to-r from-green-500 via-yellow-500 to-red-600 rounded-full opacity-20"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-6xl font-bold text-red-500 glitch">95%</div>
+                            <p class="text-xl mt-2">อันตรายสูงมาก</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What is Spearphishing -->
-    <section class="py-16 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100">
-                <i class="fas fa-question-circle mr-3 text-blue-600"></i>
-                Spearphishing คืออะไร?
-            </h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover-card">
-                    <div class="text-center mb-6">
-                        <i class="fas fa-user-secret text-5xl text-red-500 pulse-icon"></i>
+                    <div class="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-green-500 via-yellow-500 to-red-600">
+                        <div class="absolute right-5 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-white rounded-full shadow-2xl pulse-glow"></div>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-center dark:text-white">การโจมตีแบบเจาะจง</h3>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        ผู้โจมตีจะศึกษาข้อมูลของเป้าหมายอย่างละเอียด เพื่อสร้างอีเมลที่ดูน่าเชื่อถือและตรงกับความสนใจของเหยื่อ
-                    </p>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover-card">
-                    <div class="text-center mb-6">
-                        <i class="fas fa-envelope text-5xl text-yellow-500 pulse-icon"></i>
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                        <i class="fas fa-users text-3xl text-blue-400 mb-2"></i>
+                        <p class="font-semibold">เป้าหมายหลัก</p>
+                        <p class="text-sm text-gray-400">ผู้บริหาร, พนักงาน</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-center dark:text-white">อีเมลปลอมแปลง</h3>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        ใช้อีเมลที่ดูเหมือนมาจากแหล่งที่น่าเชื่อถือ เช่น เพื่อนร่วมงาน หน่วยงานรัฐ หรือบริษัทที่รู้จัก
-                    </p>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover-card">
-                    <div class="text-center mb-6">
-                        <i class="fas fa-virus text-5xl text-purple-500 pulse-icon"></i>
+                    <div>
+                        <i class="fas fa-chart-line text-3xl text-yellow-400 mb-2"></i>
+                        <p class="font-semibold">อัตราความสำเร็จ</p>
+                        <p class="text-sm text-gray-400">สูงถึง 70%</p>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4 text-center dark:text-white">เป้าหมายการโจมตี</h3>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        ต้องการขโมยข้อมูลสำคัญ ติดตั้งมัลแวร์ หรือเข้าถึงระบบภายในองค์กร
-                    </p>
+                    <div>
+                        <i class="fas fa-dollar-sign text-3xl text-green-400 mb-2"></i>
+                        <p class="font-semibold">ความเสียหาย</p>
+                        <p class="text-sm text-gray-400">หลายล้านบาท</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Warning Signs -->
-    <section class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+    <!-- Attack Stages -->
+    <section class="py-20 relative z-10">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100">
-                <i class="fas fa-exclamation-triangle mr-3 text-orange-500"></i>
-                สัญญาณเตือนที่ควรระวัง
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal">
+                <i class="fas fa-layer-group mr-3 text-purple-500"></i>
+                ขั้นตอนการโจมตี
             </h2>
             
-            <div class="max-w-4xl mx-auto space-y-4">
-                <div class="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900 dark:to-red-900 p-6 rounded-lg shadow-md hover-card">
-                    <i class="fas fa-spell-check mr-3 text-2xl text-orange-600"></i>
-                    <span class="text-lg dark:text-white">การสะกดคำผิดหรือไวยากรณ์ที่ไม่ถูกต้อง</span>
-                </div>
-                
-                <div class="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900 dark:to-red-900 p-6 rounded-lg shadow-md hover-card">
-                    <i class="fas fa-clock mr-3 text-2xl text-red-600"></i>
-                    <span class="text-lg dark:text-white">ข้อความที่เร่งรัดให้ดำเนินการทันที</span>
-                </div>
-                
-                <div class="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900 dark:to-red-900 p-6 rounded-lg shadow-md hover-card">
-                    <i class="fas fa-link mr-3 text-2xl text-orange-600"></i>
-                    <span class="text-lg dark:text-white">ลิงก์ที่ดูน่าสงสัยหรือ URL ที่ไม่ตรงกับองค์กรจริง</span>
-                </div>
-                
-                <div class="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900 dark:to-red-900 p-6 rounded-lg shadow-md hover-card">
-                    <i class="fas fa-paperclip mr-3 text-2xl text-red-600"></i>
-                    <span class="text-lg dark:text-white">ไฟล์แนบที่ไม่คาดคิดหรือนามสกุลที่น่าสงสัย</span>
-                </div>
-                
-                <div class="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900 dark:to-red-900 p-6 rounded-lg shadow-md hover-card">
-                    <i class="fas fa-user-tie mr-3 text-2xl text-orange-600"></i>
-                    <span class="text-lg dark:text-white">ขอข้อมูลส่วนตัวหรือรหัสผ่านผ่านอีเมล</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Prevention Tips -->
-    <section class="py-16 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100">
-                <i class="fas fa-shield-virus mr-3 text-green-600"></i>
-                วิธีป้องกันตัวเอง
-            </h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center hover-card">
-                    <i class="fas fa-check-double text-4xl text-green-500 mb-4"></i>
-                    <h3 class="text-lg font-semibold mb-2 dark:text-white">ตรวจสอบผู้ส่ง</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">
-                        ตรวจสอบอีเมลผู้ส่งอย่างละเอียด มองหาความผิดปกติในชื่อโดเมน
-                    </p>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center hover-card">
-                    <i class="fas fa-mouse-pointer text-4xl text-blue-500 mb-4"></i>
-                    <h3 class="text-lg font-semibold mb-2 dark:text-white">ระวังการคลิกลิงก์</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">
-                        วางเมาส์บนลิงก์เพื่อดู URL จริง ก่อนคลิกทุกครั้ง
-                    </p>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center hover-card">
-                    <i class="fas fa-phone text-4xl text-purple-500 mb-4"></i>
-                    <h3 class="text-lg font-semibold mb-2 dark:text-white">ยืนยันทางอื่น</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">
-                        หากสงสัย ติดต่อผู้ส่งผ่านช่องทางอื่นเพื่อยืนยัน
-                    </p>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center hover-card">
-                    <i class="fas fa-graduation-cap text-4xl text-orange-500 mb-4"></i>
-                    <h3 class="text-lg font-semibold mb-2 dark:text-white">อัพเดตความรู้</h3>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">
-                        ติดตามข่าวสารและเทคนิคการหลอกลวงใหม่ๆ อยู่เสมอ
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Demo -->
-    <section class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100">
-                <i class="fas fa-desktop mr-3 text-indigo-600"></i>
-                ตัวอย่างอีเมล Spearphishing
-            </h2>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gray-100 dark:bg-gray-700 p-8 rounded-xl shadow-xl">
-                    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 mb-4">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-envelope text-2xl text-gray-600 mr-3"></i>
-                            <div>
-                                <p class="font-semibold dark:text-white">จาก: noreply@bankofthaiIand.com</p>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">
-                                    <i class="fas fa-exclamation-circle text-red-500 mr-1"></i>
-                                    สังเกต: ใช้ตัว I แทน L ในคำว่า Thailand
+            <div class="max-w-6xl mx-auto">
+                <div class="space-y-6">
+                    <!-- Stage 1 -->
+                    <div class="glass p-8 rounded-3xl reveal hover:scale-[1.02] transition-all duration-500 group">
+                        <div class="flex items-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-3xl font-bold mr-6 group-hover:scale-110 transition-transform">
+                                1
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold mb-2">
+                                    <i class="fas fa-search mr-2"></i>
+                                    การสำรวจข้อมูล (Reconnaissance)
+                                </h3>
+                                <p class="text-gray-300">
+                                    ผู้โจมตีรวบรวมข้อมูลเป้าหมายจาก Social Media, เว็บไซต์บริษัท, LinkedIn
                                 </p>
                             </div>
                         </div>
-                        
-                        <p class="mb-4 dark:text-gray-300">
-                            <strong>เรื่อง:</strong> ด่วน! บัญชีของคุณจะถูกระงับ
-                        </p>
-                        
-                        <div class="border-l-4 border-red-500 pl-4 bg-red-50 dark:bg-red-900 p-4 rounded">
-                            <p class="mb-2 dark:text-gray-300">เรียน ลูกค้าผู้มีอุปการคุณ,</p>
-                            <p class="mb-2 dark:text-gray-300">
-                                ระบบตรวจพบกิจกรรมที่น่าสงสัยในบัญชีของคุณ กรุณายืนยันตัวตนภายใน 24 ชั่วโมง
-                            </p>
-                            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition" onclick="alert('⚠️ นี่คือตัวอย่างลิงก์หลอกลวง! ในชีวิตจริงอย่าคลิก!')">
-                                คลิกที่นี่เพื่อยืนยัน
-                            </button>
+                    </div>
+                    
+                    <!-- Stage 2 -->
+                    <div class="glass p-8 rounded-3xl reveal hover:scale-[1.02] transition-all duration-500 group">
+                        <div class="flex items-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center text-3xl font-bold mr-6 group-hover:scale-110 transition-transform">
+                                2
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold mb-2">
+                                    <i class="fas fa-hammer mr-2"></i>
+                                    การสร้างอีเมลหลอกลวง (Weaponization)
+                                </h3>
+                                <p class="text-gray-300">
+                                    สร้างอีเมลที่ดูน่าเชื่อถือ แนบมัลแวร์หรือลิงก์ฟิชชิ่ง
+                                </p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="bg-yellow-100 dark:bg-yellow-900 p-4 rounded-lg">
-                        <p class="text-sm dark:text-gray-300">
-                            <i class="fas fa-lightbulb mr-2"></i>
-                            <strong>จุดน่าสงสัย:</strong> โดเมนปลอม, ข้อความเร่งรัด, ขอให้คลิกลิงก์ด่วน
+                    <!-- Stage 3 -->
+                    <div class="glass p-8 rounded-3xl reveal hover:scale-[1.02] transition-all duration-500 group">
+                        <div class="flex items-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center text-3xl font-bold mr-6 group-hover:scale-110 transition-transform">
+                                3
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold mb-2">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    การส่งอีเมล (Delivery)
+                                </h3>
+                                <p class="text-gray-300">
+                                    ส่งอีเมลไปยังเป้าหมายในช่วงเวลาที่เหมาะสม
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stage 4 -->
+                    <div class="glass p-8 rounded-3xl reveal hover:scale-[1.02] transition-all duration-500 group">
+                        <div class="flex items-center">
+                            <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center text-3xl font-bold mr-6 group-hover:scale-110 transition-transform">
+                                4
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold mb-2">
+                                    <i class="fas fa-bomb mr-2"></i>
+                                    การโจมตี (Exploitation)
+                                </h3>
+                                <p class="text-gray-300">
+                                    เหยื่อคลิกลิงก์หรือเปิดไฟล์แนบ มัลแวร์เริ่มทำงาน
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Signs with Animation -->
+    <section class="py-20 relative z-10 bg-red-900 bg-opacity-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal">
+                <i class="fas fa-exclamation-triangle mr-3 text-yellow-400 animate-pulse"></i>
+                สัญญาณอันตรายที่ต้องระวัง
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Warning 1 -->
+                <div class="glass p-6 rounded-2xl reveal hover:scale-105 transition-all duration-300 border-2 border-red-500 border-opacity-50">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-spell-check text-4xl text-red-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">ข้อความผิดพลาด</h3>
+                    <p class="text-gray-300 text-center">
+                        คำสะกดผิด ไวยากรณ์แปลกๆ การใช้ภาษาที่ไม่เป็นทางการ
+                    </p>
+                </div>
+                
+                <!-- Warning 2 -->
+                <div class="glass p-6 rounded-2xl reveal hover:scale-105 transition-all duration-300 border-2 border-orange-500 border-opacity-50">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-clock text-4xl text-orange-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">ความเร่งด่วน</h3>
+                    <p class="text-gray-300 text-center">
+                        กดดันให้ทำทันที ขู่ว่าจะปิดบัญชี หรือมีเวลาจำกัด
+                    </p>
+                </div>
+                
+                <!-- Warning 3 -->
+                <div class="glass p-6 rounded-2xl reveal hover:scale-105 transition-all duration-300 border-2 border-yellow-500 border-opacity-50">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-link text-4xl text-yellow-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">ลิงก์แปลกๆ</h3>
+                    <p class="text-gray-300 text-center">
+                        URL ที่ดูคล้ายแต่ไม่ใช่เว็บจริง มีตัวอักษรแปลกๆ
+                    </p>
+                </div>
+                
+                <!-- Warning 4 -->
+                <div class="glass p-6 rounded-2xl reveal hover:scale-105 transition-all duration-300 border-2 border-purple-500 border-opacity-50">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-paperclip text-4xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">ไฟล์แนบน่าสงสัย</h3>
+                    <p class="text-gray-300 text-center">
+                        ไฟล์ .exe, .zip ที่ไม่คาดคิด หรือไฟล์ที่ไม่ได้ขอ
+                    </p>
+                </div>
+                
+                <!-- Warning 5 -->
+                <div class="glass p-6 rounded-2xl reveal hover:scale-105 transition-all duration-300 border-2 border-pink-500 border-opacity-50">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-secret text-4xl text-pink-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">ขอข้อมูลส่วนตัว</h3>
+                    <p class="text-gray-300 text-center">
+                        ขอรหัสผ่าน เลขบัตรเครดิต หรือข้อมูลสำคัญ
+                    </p>
+                </div>
+                
+                <!-- Warning 6 -->
+                <div class="glass p-6 rounded-2xl reveal hover:scale-105 transition-all duration-300 border-2 border-indigo-500 border-opacity-50">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-at text-4xl text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center">อีเมลปลอม</h3>
+                    <p class="text-gray-300 text-center">
+                        ที่อยู่อีเมลคล้ายแต่ไม่ตรงกับองค์กรจริง
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="py-20 relative z-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal">
+                <i class="fas fa-laptop-code mr-3 text-cyan-400"></i>
+                ตัวอย่าง Spearphishing Email
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="glass p-8 rounded-3xl reveal">
+                    <!-- Email UI -->
+                    <div class="bg-gray-800 rounded-2xl p-6 mb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <span class="text-sm text-gray-400">Suspicious Email Detector</span>
+                        </div>
+                        
+                        <!-- Email Content -->
+                        <div class="bg-gray-900 rounded-lg p-6">
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-400 mb-1">จาก:</p>
+                                <p class="font-mono text-red-400">
+                                    security@amaz0n.com
+                                    <span class="ml-2 text-xs bg-red-600 px-2 py-1 rounded">FAKE!</span>
+                                </p>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <p class="text-sm text-gray-400 mb-1">เรื่อง:</p>
+                                <p class="text-xl font-semibold text-yellow-400">
+                                    ⚠️ บัญชีของคุณถูกระงับชั่วคราว
+                                </p>
+                            </div>
+                            
+                            <div class="border-t border-gray-700 pt-4">
+                                <p class="mb-4">เรียน ลูกค้าที่มีคุณค่า,</p>
+                                <p class="mb-4 text-gray-300">
+                                    เราตรวจพบกิจกรรมที่น่าสงสัยในบัญชีของคุณ กรุณายืนยันตัวตนภายใน 
+                                    <span class="text-red-400 font-bold">24 ชั่วโมง</span> 
+                                    มิฉะนั้นบัญชีของคุณจะถูกปิดถาวร
+                                </p>
+                                
+                                <div class="text-center my-6">
+                                    <button class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105" onclick="showPhishingAlert()">
+                                        ยืนยันบัญชีทันที
+                                    </button>
+                                </div>
+                                
+                                <p class="text-sm text-gray-500">
+                                    ขอแสดงความนับถือ,<br>
+                                    ทีมรักษาความปลอดภัย Amazon
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Analysis Points -->
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 text-red-400">
+                            <i class="fas fa-times-circle text-xl"></i>
+                            <span>โดเมนปลอม: amaz0n.com (ใช้เลข 0 แทน o)</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-orange-400">
+                            <i class="fas fa-exclamation-circle text-xl"></i>
+                            <span>สร้างความกดดันด้วยเวลาจำกัด 24 ชั่วโมง</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-yellow-400">
+                            <i class="fas fa-warning text-xl"></i>
+                            <span>ใช้คำขู่ว่าจะปิดบัญชีถาวร</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-purple-400">
+                            <i class="fas fa-mouse-pointer text-xl"></i>
+                            <span>ปุ่มลิงก์ไปยังเว็บไซต์ปลอม</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protection Tips -->
+    <section class="py-20 relative z-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 reveal">
+                <i class="fas fa-shield-alt mr-3 text-green-400"></i>
+                วิธีป้องกันตัวเอง
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <!-- Tip 1 -->
+                <div class="group reveal">
+                    <div class="glass p-6 rounded-2xl h-full hover:scale-105 transition-all duration-300 group-hover:border-green-400 border-2 border-transparent">
+                        <div class="text-center mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-check-double text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">ตรวจสอบผู้ส่ง</h3>
+                        <p class="text-gray-300 text-center text-sm">
+                            ดูที่อยู่อีเมลอย่างละเอียด ระวังตัวอักษรที่คล้ายกัน
                         </p>
+                    </div>
+                </div>
+                
+                <!-- Tip 2 -->
+                <div class="group reveal">
+                    <div class="glass p-6 rounded-2xl h-full hover:scale-105 transition-all duration-300 group-hover:border-blue-400 border-2 border-transparent">
+                        <div class="text-center mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-mouse-pointer text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Hover ก่อนคลิก</h3>
+                        <p class="text-gray-300 text-center text-sm">
+                            วางเมาส์บนลิงก์เพื่อดู URL จริงก่อนคลิกเสมอ
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Tip 3 -->
+                <div class="group reveal">
+                    <div class="glass p-6 rounded-2xl h-full hover:scale-105 transition-all duration-300 group-hover:border-purple-400 border-2 border-transparent">
+                        <div class="text-center mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-purple-400 to-pink-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-phone-alt text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">ยืนยันทางอื่น</h3>
+                        <p class="text-gray-300 text-center text-sm">
+                            หากสงสัย โทรหาองค์กรนั้นโดยตรงเพื่อยืนยัน
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Tip 4 -->
+                <div class="group reveal">
+                    <div class="glass p-6 rounded-2xl h-full hover:scale-105 transition-all duration-300 group-hover:border-orange-400 border-2 border-transparent">
+                        <div class="text-center mb-4">
+                            <div class="w-20 h-20 mx-auto bg-gradient-to-br from-orange-400 to-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fas fa-graduation-cap text-3xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">อัพเดตความรู้</h3>
+                        <p class="text-gray-300 text-center text-sm">
+                            ติดตามเทคนิคหลอกลวงใหม่ๆ อยู่เสมอ
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Security Tools -->
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-bold mb-8 reveal">เครื่องมือช่วยป้องกัน</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="glass px-6 py-3 rounded-full reveal hover:scale-105 transition-all">
+                        <i class="fas fa-envelope-open-text mr-2 text-cyan-400"></i>
+                        Email Filter
+                    </div>
+                    <div class="glass px-6 py-3 rounded-full reveal hover:scale-105 transition-all">
+                        <i class="fas fa-key mr-2 text-yellow-400"></i>
+                        2FA Authentication
+                    </div>
+                    <div class="glass px-6 py-3 rounded-full reveal hover:scale-105 transition-all">
+                        <i class="fas fa-shield-virus mr-2 text-green-400"></i>
+                        Antivirus Software
+                    </div>
+                    <div class="glass px-6 py-3 rounded-full reveal hover:scale-105 transition-all">
+                        <i class="fas fa-user-shield mr-2 text-purple-400"></i>
+                        Security Training
                     </div>
                 </div>
             </div>
@@ -325,128 +789,217 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                <i class="fas fa-users mr-3"></i>
-                ร่วมสร้างสังคมไซเบอร์ที่ปลอดภัย
-            </h2>
-            <p class="text-xl mb-8">
-                แชร์ความรู้นี้ให้คนรอบข้าง เพื่อป้องกันไม่ให้ตกเป็นเหยื่อของ Spearphishing
-            </p>
-            
-            <div class="flex justify-center space-x-4">
-                <button class="bg-white text-purple-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
-                    <i class="fab fa-facebook mr-2"></i>แชร์บน Facebook
-                </button>
-                <button class="bg-white text-purple-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
-                    <i class="fab fa-line mr-2"></i>แชร์บน LINE
-                </button>
+    <section class="py-20 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 reveal">
+                    <span class="holographic">ร่วมสร้างสังคมไซเบอร์ที่ปลอดภัย</span>
+                </h2>
+                
+                <p class="text-xl mb-12 text-gray-300 reveal">
+                    แชร์ความรู้นี้ให้คนที่คุณรัก เพื่อป้องกันพวกเขาจากภัยไซเบอร์
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-4 reveal">
+                    <button class="group bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-all duration-300 shadow-2xl">
+                        <i class="fab fa-facebook mr-2 group-hover:scale-125 transition-transform"></i>
+                        แชร์บน Facebook
+                    </button>
+                    <button class="group bg-gradient-to-r from-green-500 to-green-700 px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-all duration-300 shadow-2xl">
+                        <i class="fab fa-line mr-2 group-hover:scale-125 transition-transform"></i>
+                        แชร์บน LINE
+                    </button>
+                    <button class="group bg-gradient-to-r from-pink-500 to-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-all duration-300 shadow-2xl">
+                        <i class="fas fa-download mr-2 group-hover:scale-125 transition-transform"></i>
+                        ดาวน์โหลด PDF
+                    </button>
+                </div>
+                
+                <!-- Stats -->
+                <div class="mt-16 grid md:grid-cols-3 gap-8 reveal">
+                    <div class="glass p-6 rounded-2xl">
+                        <div class="text-3xl font-bold text-cyan-400 mb-2">91%</div>
+                        <p class="text-gray-300">ของการโจมตีไซเบอร์เริ่มจากอีเมล</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl">
+                        <div class="text-3xl font-bold text-yellow-400 mb-2">$3.86M</div>
+                        <p class="text-gray-300">ความเสียหายเฉลี่ยต่อองค์กร</p>
+                    </div>
+                    <div class="glass p-6 rounded-2xl">
+                        <div class="text-3xl font-bold text-green-400 mb-2">45%</div>
+                        <p class="text-gray-300">ลดความเสี่ยงได้ด้วยการฝึกอบรม</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 dark:bg-gray-950 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p class="mb-2">
-                <i class="fas fa-shield-alt mr-2"></i>
-                ความปลอดภัยไซเบอร์เริ่มต้นที่ตัวคุณ
-            </p>
-            <p class="text-sm text-gray-400">
-                อ้างอิง: MITRE ATT&CK Framework - Initial Access: Spearphishing
-            </p>
+    <footer class="bg-black bg-opacity-50 py-12 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="mb-6">
+                    <i class="fas fa-shield-alt text-4xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Cyber Security Awareness</h3>
+                    <p class="text-gray-400">ความปลอดภัยไซเบอร์เริ่มต้นที่ตัวคุณ</p>
+                </div>
+                
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors">
+                        <i class="fab fa-discord text-2xl"></i>
+                    </a>
+                </div>
+                
+                <p class="text-sm text-gray-500">
+                    © 2025 Cyber Security Awareness | Based on MITRE ATT&CK Framework
+                </p>
+            </div>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 z-50 glass p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 opacity-0 pointer-events-none">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
 
     <script>
         // Dark Mode Toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
-        const html = document.documentElement;
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+        const body = document.body;
         
-        // Check saved preference or default to light mode
-        if (localStorage.getItem('darkMode') === 'true') {
-            html.classList.add('dark');
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            body.classList.add('bg-gray-50', 'text-gray-900');
+            body.classList.remove('bg-gray-900', 'text-white');
+            moonIcon.classList.add('hidden');
+            sunIcon.classList.remove('hidden');
         }
         
         darkModeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.setItem('darkMode', html.classList.contains('dark'));
+            if (body.classList.contains('bg-gray-900')) {
+                body.classList.add('bg-gray-50', 'text-gray-900');
+                body.classList.remove('bg-gray-900', 'text-white');
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('bg-gray-900', 'text-white');
+                body.classList.remove('bg-gray-50', 'text-gray-900');
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            }
         });
 
-        // Smooth scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        // Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
                 }
             });
-        }, observerOptions);
+        };
+        
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
 
-        // Apply to all sections
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'all 0.6s ease-out';
-            observer.observe(section);
-        });
-
-        // Interactive hover effects
-        document.querySelectorAll('.hover-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
-        // Particles effect on hero section
+        // Scroll to Top
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                scrollToTopBtn.classList.add('opacity-100');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                scrollToTopBtn.classList.remove('opacity-100');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Phishing Alert Demo
+        function showPhishingAlert() {
+            alert('⚠️ คำเตือน!\n\nนี่คือตัวอย่างลิงก์ฟิชชิ่ง!\nในชีวิตจริง อย่าคลิกลิงก์แบบนี้\n\n✓ ตรวจสอบ URL ก่อนคลิกเสมอ\n✓ ดูที่อยู่อีเมลผู้ส่งให้ละเอียด\n✓ หากสงสัย ติดต่อองค์กรโดยตรง');
+        }
+
+        // Particle Effect
         function createParticle() {
             const particle = document.createElement('div');
-            particle.style.position = 'absolute';
-            particle.style.width = '4px';
-            particle.style.height = '4px';
-            particle.style.background = 'rgba(255, 255, 255, 0.5)';
-            particle.style.borderRadius = '50%';
-            particle.style.pointerEvents = 'none';
+            particle.className = 'absolute w-1 h-1 bg-cyan-400 rounded-full pointer-events-none';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = -10 + 'px';
             
-            const startX = Math.random() * window.innerWidth;
-            const startY = -10;
-            
-            particle.style.left = startX + 'px';
-            particle.style.top = startY + 'px';
-            
-            const hero = document.querySelector('.gradient-bg');
-            hero.appendChild(particle);
-            
-            let posY = startY;
-            const speed = 0.5 + Math.random() * 1;
-            
-            const animate = () => {
-                posY += speed;
-                particle.style.top = posY + 'px';
-                particle.style.opacity = 1 - (posY / hero.offsetHeight);
+            const particles = document.querySelector('.particles');
+            if (particles) {
+                particles.appendChild(particle);
                 
-                if (posY < hero.offsetHeight) {
-                    requestAnimationFrame(animate);
-                } else {
-                    particle.remove();
+                let posY = -10;
+                const speed = 0.5 + Math.random() * 1.5;
+                const opacity = 0.3 + Math.random() * 0.7;
+                particle.style.opacity = opacity;
+                
+                const animate = () => {
+                    posY += speed;
+                    particle.style.top = posY + 'px';
+                    
+                    if (posY < window.innerHeight) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        particle.remove();
+                    }
+                };
+                
+                animate();
+            }
+        }
+        
+        // Create particles periodically
+        setInterval(createParticle, 200);
+
+        // Typing Effect for Hero Title
+        const heroTitle = document.querySelector('.font-cyber');
+        if (heroTitle) {
+            const text = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let i = 0;
+            
+            const typeWriter = () => {
+                if (i < text.length) {
+                    heroTitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
                 }
             };
             
-            animate();
+            setTimeout(typeWriter, 500);
         }
-
-        // Create particles periodically
-        setInterval(createParticle, 300);
     </script>
 </body>
 </html>
